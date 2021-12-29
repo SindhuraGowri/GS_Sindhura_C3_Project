@@ -28,7 +28,9 @@ public class RestaurantService {
         return restaurantToBeRemoved;
     }
 
-    public List<Restaurant> getRestaurants() {
-        return restaurants;
-    }
+    public List<Restaurant> getRestaurants() throws RestaurantNotFoundException {
+        if(restaurants.size() > 0)
+            return restaurants;
+        else
+            throw new RestaurantNotFoundException("Exception ==> No restaurants added yet!!");    }
 }

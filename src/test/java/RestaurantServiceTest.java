@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,6 +37,12 @@ class RestaurantServiceTest {
     }
     //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //<<<<<<<<<<<<<<<<GET RESTAURANTS>>>>>>>>>>>>>
+    @Test
+    public void get_all_existing_restaurants() throws RestaurantNotFoundException {
+        List<Restaurant> restaurants = service.getRestaurants();
+        assertTrue(restaurants.size() > 0);
+    }
 
 
 
@@ -61,7 +68,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void add_restaurant_should_increase_list_of_restaurants_size_by_1(){
+    public void add_restaurant_should_increase_list_of_restaurants_size_by_1() throws RestaurantNotFoundException{
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
